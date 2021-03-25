@@ -99,6 +99,11 @@ public class Product implements Serializable {
 	public void setDate(Instant date) {
 		this.date = date;
 	}
+	
+	public Set<Category> getCategories() {
+		return categories;
+	}
+
 
 	@Override
 	public int hashCode() {
