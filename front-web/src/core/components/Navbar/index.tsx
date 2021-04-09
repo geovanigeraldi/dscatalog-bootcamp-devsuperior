@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 const Navbar = () => (
   <nav className="row bg-primary main-nav">
     <div className="col-2">
-      <Link to="." className="nav-logo-text">
+      <Link to="/" className="nav-logo-text">
         <h4>DS Catalog</h4>
       </Link>      
     </div>
@@ -16,7 +16,7 @@ const Navbar = () => (
           </NavLink>        
         </li>        
         <li>
-          <NavLink to="/catalog" activeClassName="active">
+          <NavLink to="/products" activeClassName="active">
             CATÁLOGO
           </NavLink>        
         </li>
