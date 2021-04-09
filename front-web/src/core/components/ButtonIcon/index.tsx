@@ -1,4 +1,4 @@
-import { ReactComponent as Seta } from '../../assets/images/Seta.svg';
+import { ReactComponent as Seta } from 'core/assets/images/Seta.svg';
 import './styles.scss';
 
 type Props = {
