@@ -9,7 +9,6 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.geovanigeraldi.dscatalog.dto.UserInsertDTO;
-import com.geovanigeraldi.dscatalog.entities.User;
 import com.geovanigeraldi.dscatalog.repositories.UserRepository;
 import com.geovanigeraldi.dscatalog.resources.exceptions.FieldMessage;
 import com.geovanigeraldi.dscatalog.services.validation.UserUpdateValid;
