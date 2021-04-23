@@ -1,5 +1,6 @@
 package com.geovanigeraldi.dscatalog.services;
 
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -13,9 +14,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.geovanigeraldi.dscatalog.dto.CategoryDTO;
 import com.geovanigeraldi.dscatalog.dto.ProductDTO;
+import com.geovanigeraldi.dscatalog.dto.UriDTO;
 import com.geovanigeraldi.dscatalog.entities.Category;
 import com.geovanigeraldi.dscatalog.entities.Product;
 import com.geovanigeraldi.dscatalog.repositories.CategoryRepository;
@@ -32,6 +35,9 @@ public class ProductService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
+	@Autowired 
+	private S3Service s3service;
+	
 	@Transactional(readOnly = true)
 	public Page<ProductDTO> findAllPaged(Long categoryId, String name, PageRequest pageRequest) {
 		List<Category> categories = (categoryId == 0) ? null : Arrays.asList(categoryRepository.getOne(categoryId));
@@ -93,5 +99,10 @@ public class ProductService {
 			Category category = categoryRepository.getOne(catDto.getId());
 			entity.getCategories().add(category);
 		}
+	}
+
+	public UriDTO uploadFile(MultipartFile file) {
+		URL url = s3service.uploadFile(file);
+		return new UriDTO(url.toString());
 	}
 }
